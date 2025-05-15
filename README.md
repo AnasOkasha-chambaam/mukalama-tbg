@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mukalama - Podcast Website
+
+## Project Description
+
+This project implements a Figma design of a podcast website intro with advanced animations. The goal is to showcase abilities in creating complex, smooth animations that precisely match the Figma design prototype.
+
+```
+This task is to implement the provided figam design of a podcast website intro
+with applying the animation exactly as the figma design prototype. We want you
+to showcase your abilities in advanced animations with a real example of our
+day-to-day projects to ensure you are aligning perfectly with our needs
+```
+
+## Key Features
+
+- Smooth entrance animations using GSAP
+- Responsive design that works on mobile and desktop
+- Precise implementation of the Figma design
+- Custom color system using OKLCH colors
+- Custom typography with Source Arabic Sans
+
+## Technology Stack
+
+- Next.js 15
+- GSAP for animations
+- Tailwind CSS v4
+- TypeScript
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Animation Details
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The website features several animated elements:
 
-## Learn More
+- Fade-in and slide-up animations for text elements
+- Scaling animations for background decorative elements
+- Staggered animations for the menu bars
 
-To learn more about Next.js, take a look at the following resources:
+## Design System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The design uses a custom color palette in OKLCH format:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Background: Light cream color (oklch(0.97 0.04 95))
+- Text: Deep black (oklch(0.01 0 0))
+- Primary: Warm orange (oklch(0.71 0.19 27))
+- Secondary: Transparent black (oklch(0.5 0 0 / 0.1))
 
-## Deploy on Vercel
+## Font
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project uses Source Arabic Sans as the primary font.

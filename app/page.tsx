@@ -1,103 +1,163 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const waveContainerRef = useRef<HTMLImageElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  useEffect(() => {
+    // Initialize GSAP animations
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+    // Create wave animation
+    const waves = waveContainerRef.current?.querySelectorAll(".wave");
+
+    if (waves) {
+      tl.fromTo(
+        waves,
+        {
+          opacity: 0,
+          scale: 0.85,
+        },
+        {
+          opacity: 0.5,
+          scale: 1,
+          stagger: 0.05,
+          duration: 1.2,
+        }
+      );
+    }
+
+    // Animate header elements
+    const headerItems = headerRef.current?.querySelectorAll(".header-item");
+    if (headerItems) {
+      tl.fromTo(
+        headerItems,
+        { opacity: 0 },
+        { opacity: 1, stagger: 0.1, duration: 0.8 },
+        0.2
+      );
+    }
+
+    // Animate title and subtitle
+    tl.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1 },
+      0.5
+    )
+      .fromTo(
+        subtitleRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        0.8
+      )
+      .fromTo(
+        buttonRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.6 },
+        1
+      );
+
+    // Continuous subtle pulsing animation for waves
+    if (waves) {
+      gsap.to(waves, {
+        scale: 1.05,
+        opacity: 0.55,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        stagger: {
+          each: 0.2,
+          from: "center",
+        },
+      });
+    }
+
+    return () => {
+      // Cleanup animations
+      tl.kill();
+    };
+  }, []);
+
+  return (
+    <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
+      {/* Header */}
+      <header
+        ref={headerRef}
+        className="flex justify-between items-center mx-20 mt-10 rtl"
+        dir="rtl"
+      >
+        <Image src="/logo.png" alt="Mukalama" width={141.56} height={40} />
+        <div className="flex gap-[50px] items-center">
+          <div className="header-item flex gap-[25px] items-center">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
+              src="/assets/icons/email.icon.png"
+              alt="Email"
+              className="w-auto h-[20px]"
               width={20}
               height={20}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <Image
+              src="/assets/icons/instagram.icon.png"
+              alt="Instagram"
+              className="w-auto h-[20px]"
+              width={20}
+              height={20}
+            />
+            <Image
+              src="/assets/icons/phone.icon.png"
+              alt="Phone"
+              className="w-auto h-[20px]"
+              width={20}
+              height={20}
+            />
+          </div>
+          <Button className="flex-col" size={"icon"} variant="ghost">
+            <span className="w-7 h-[3px] bg-foreground" />
+            <span className="w-7 h-[3px] bg-primary" />
+          </Button>
+        </div>
+      </header>
+
+      {/* Main content */}
+      <main className="flex flex-col items-center justify-center text-center">
+        {/* Circular sound waves */}
+        <Image
+          ref={waveContainerRef}
+          aria-hidden="true"
+          src="/assets/icons/waves.svg"
+          alt="Waves"
+          width={951}
+          height={951}
+          className="absolute top-1/2 left-1/2 pointer-events-none w-[951px] h-[951px] opacity-50 -translate-x-1/2 -translate-y-1/2"
+        />
+
+        {/* Title and subtitle */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center justify-center gap-8">
+          <h2
+            ref={titleRef}
+            className="text-[70px] font-semibold rtl text-center"
+            dir="rtl"
           >
-            Read our docs
-          </a>
+            أهلاً بك في <span className="text-primary">مُكالَمة،</span>
+          </h2>
+          <p
+            ref={subtitleRef}
+            className="text-[24.65px] font-medium rtl text-center"
+            dir="rtl"
+          >
+            منصتك لاكتشاف أفكار مبتكرة <br /> تلهم التغيير الإيجابي.
+          </p>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
