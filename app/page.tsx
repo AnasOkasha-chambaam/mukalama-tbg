@@ -1,131 +1,106 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useScaler } from "@/hooks";
 import Image from "next/image";
 
 export default function Home() {
-  const { scale, scaleStyle } = useScaler({});
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
-      {/* Header */}
       <header
-        className="flex justify-between items-center rtl"
+        className="fixed top-0 inset-x-0 z-50 flex justify-between items-center rtl mx-14 mt-7 2xl:mx-20 2xl:mt-10"
         dir="rtl"
-        style={{
-          margin: `${scaleStyle.margin("40px").margin} ${
-            scaleStyle.margin("80px").margin
-          } 0 ${scaleStyle.margin("80px").margin}`,
-        }}
       >
         <Image
-          src="/logo.png"
+          src="/logo.svg"
           alt="Mukalama"
           width={141.56}
           height={40}
-          style={{
-            transform: `scale(${scale})`,
-          }}
+          className="w-[70px] lg:w-[80px] 2xl:w-[141.56px]"
         />
-        <div
-          className="flex items-center"
-          style={{
-            gap: `${scaleStyle.gap("50px").gap}`,
-          }}
-        >
-          <div
-            className="header-item flex items-center"
-            style={{
-              ...scaleStyle.gap("25px"),
-            }}
-          >
+        <div className="flex gap-[50px] items-center">
+          <div className="header-item flex gap-[25px] items-center">
             <Image
-              src="/assets/icons/email.icon.png"
+              src="/assets/icons/email.icon.svg"
               alt="Email"
-              className="w-auto"
               width={20}
               height={20}
-              style={{
-                ...scaleStyle.height("20px"),
-              }}
+              className="w-auto h-[15px] 2xl:h-[20px]"
             />
             <Image
-              src="/assets/icons/instagram.icon.png"
+              src="/assets/icons/instagram.icon.svg"
               alt="Instagram"
-              className="w-auto"
               width={20}
               height={20}
-              style={{
-                ...scaleStyle.height("20px"),
-              }}
+              className="w-auto h-[15px] 2xl:h-[20px]"
             />
             <Image
-              src="/assets/icons/phone.icon.png"
+              src="/assets/icons/phone.icon.svg"
               alt="Phone"
-              className="w-auto"
               width={20}
               height={20}
-              style={{
-                ...scaleStyle.height("20px"),
-              }}
+              className="w-auto h-[15px] 2xl:h-[20px]"
             />
           </div>
-          <Button
-            className="flex-col"
-            size={"icon"}
-            variant="ghost"
-            style={{
-              transform: `scale(${scale})`,
-            }}
-          >
+          <Button size={"icon"} variant="ghost" className="flex-col scale-75">
             <span className="w-7 h-[3px] bg-foreground" />
             <span className="w-7 h-[3px] bg-primary" />
           </Button>
         </div>
       </header>
 
-      {/* Main content */}
-      <main className="flex flex-col items-center justify-center text-center">
-        {/* Circular sound waves */}
-        <Image
-          aria-hidden="true"
-          src="/assets/icons/waves.svg"
-          alt="Waves"
-          width={951}
-          height={951}
-          className="absolute top-1/2 left-1/2 pointer-events-none w-[951px] h-[951px] opacity-50 -translate-x-1/2 -translate-y-1/2"
-          style={{
-            transform: `scale(${scale})`,
-          }}
-        />
-
-        {/* Title and subtitle */}
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center justify-center"
-          style={{
-            ...scaleStyle.gap("32px"),
-          }}
-        >
+      <Image
+        aria-hidden="true"
+        src="/assets/icons/waves.svg"
+        alt="Waves"
+        width={951}
+        height={951}
+        className="fixed top-1/2 left-1/2 pointer-events-none opacity-50 -translate-x-1/2 -translate-y-1/2 h-[90vh] w-auto aspect-square"
+      />
+      <main className="relative min-h-screen flex flex-col items-center justify-center text-center">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center">
           <h2
-            className="font-semibold rtl text-center"
+            className="text-2xl lg:text-3xl 2xl:text-5xl font-semibold rtl text-center"
             dir="rtl"
-            style={{
-              ...scaleStyle.fontSize("70px"),
-            }}
           >
             أهلاً بك في <span className="text-primary">مُكالَمة،</span>
           </h2>
           <p
-            className="text-[24.65px] font-medium rtl text-center"
+            className="text-xs lg:text-sm 2xl:text-[24.65px] font-medium rtl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-[30px] z-10 w-max"
             dir="rtl"
-            style={{
-              ...scaleStyle.fontSize("22px"),
-            }}
           >
             منصتك لاكتشاف أفكار مبتكرة <br /> تلهم التغيير الإيجابي.
           </p>
         </div>
       </main>
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center">
+          <Image
+            aria-hidden="true"
+            src="/assets/images/saudi-man.svg"
+            alt="Waves"
+            width={192}
+            height={584}
+            className="scale-200 px-5"
+          />
+        </div>
+      </section>
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center">
+          <Image
+            aria-hidden="true"
+            src="/assets/images/mobile-1.png"
+            alt="Waves"
+            width={298}
+            height={431}
+          />
+          <p className="text-3xl lg:text-5xl font-bold rtl text-center w-max">
+            حيث تبدأ الحكاية
+          </p>
+          <p className="text-[100px] lg:text-[170px] font-bold rtl text-center text-primary w-max">
+            بمكالمة قصيرة
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
