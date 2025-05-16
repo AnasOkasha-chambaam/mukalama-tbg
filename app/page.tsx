@@ -72,7 +72,7 @@ export default function Home() {
           </p>
         </div>
       </main>
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-sidebar-accent-foreground">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center">
           <Image
             aria-hidden="true"
@@ -80,7 +80,7 @@ export default function Home() {
             alt="Waves"
             width={192}
             height={584}
-            className="scale-200 px-5"
+            className="scale-[250%] px-5"
           />
         </div>
       </section>
@@ -89,16 +89,83 @@ export default function Home() {
           <Image
             aria-hidden="true"
             src="/assets/images/mobile-1.png"
-            alt="Waves"
+            alt="Mobile"
             width={298}
             height={431}
+            className="scale-[75%] -translate-y-1/5 rotate-[10.48deg]"
           />
-          <p className="text-3xl lg:text-5xl font-bold rtl text-center w-max">
+          <p className="absolute top-1/2 left-1/2 translate-y-[170%] z-10 -translate-x-1/2 text-3xl lg:text-5xl font-bold rtl text-center w-max">
             حيث تبدأ الحكاية
           </p>
-          <p className="text-[100px] lg:text-[170px] font-bold rtl text-center text-primary w-max">
+          <p className="absolute top-1/2 left-1/2 -translate-y-1/6 -translate-x-1/2 text-[100px] lg:text-[140px] font-semibold rtl text-center text-primary w-max">
             بمكالمة قصيرة
           </p>
+        </div>
+      </section>
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/6 z-10 flex flex-col items-center justify-center">
+          <div className="guy-and-accessories absolute z-50 top-1/2 left-1/2 -translate-y-[58%] -translate-x-[140%] scale-75">
+            <Image
+              src="/assets/images/guy-standing.png"
+              alt="Guy Standing"
+              width={174}
+              height={584}
+              className="relative z-20"
+            />
+            <div className="bulb-container absolute top-1/2 right-0 -translate-y-[140%] z-40 translate-x-[50%]">
+              <div className="bulb relative z-20">
+                <Image
+                  src="/assets/images/bulb.svg"
+                  alt="Bulb"
+                  width={92}
+                  height={137}
+                  className="absolute opacity-85"
+                />
+                <Image
+                  src="/assets/images/bulb (variant).svg"
+                  alt="Bulb"
+                  width={92}
+                  height={137}
+                />
+              </div>
+              <Image
+                src="/assets/images/scribbles-star.svg"
+                alt="Scribbles"
+                width={123}
+                height={132}
+                className="absolute top-0 left-0 translate-x-[45%] -translate-y-[22%] z-10 scale-125"
+              />
+            </div>
+            <Image
+              src="/assets/images/rocket.svg"
+              alt="Rocket"
+              width={102}
+              height={118}
+              className="rocket-container absolute top-0 left-0 -translate-x-[25%] translate-y-[60%] z-10"
+            />
+
+            <Image
+              src="/assets/images/spark.svg"
+              alt="Spark"
+              width={31}
+              height={49}
+              className="absolute top-0 right-0 -translate-y-[50%] -translate-x-[50%]"
+            />
+
+            <Image
+              src="/assets/images/ellipse.svg"
+              alt="Ellipse"
+              width={9}
+              height={9}
+              className="absolute top-[39%] left-0 -translate-y-1/2 z-10"
+            />
+          </div>
+          <div className="text-3xl lg:text-5xl font-medium rtl text-center w-max !text-[130px] flex flex-col gap-2 items-center justify-center">
+            <p className="text-primary -translate-x-[45px]">
+              تحمل رســـــــــــــالة
+            </p>
+            <p>طويــــــــــــــــلة الأثر</p>
+          </div>
         </div>
       </section>
     </div>
