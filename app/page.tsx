@@ -24,84 +24,6 @@ export default function Home() {
   const wavesRef = useRef<HTMLImageElement>(null);
   const saudiManRef = useRef<HTMLImageElement>(null);
 
-  // // Animation controller for handling transitions
-  // useEffect(() => {
-  //   // Set up the initial states
-  //   if (wavesRef.current) {
-  //     gsap.set(wavesRef.current, { scale: 1 });
-  //   }
-  //   if (saudiManRef.current) {
-  //     gsap.set(saudiManRef.current, { scale: 0.125, opacity: 0 });
-  //   }
-
-  //   // Create a timeline for each section transition
-  //   const createSectionTimeline = () => {
-  //     // Clear any running animations
-  //     gsap.killTweensOf([wavesRef.current, saudiManRef.current]);
-
-  //     switch (currentSection) {
-  //       case "hero":
-  //         // Reset everything to initial state
-  //         gsap.to(wavesRef.current, {
-  //           scale: 1,
-  //           opacity: 1,
-  //           duration: 0.5,
-  //         });
-  //         gsap.to(saudiManRef.current, {
-  //           scale: 0.125,
-  //           opacity: 0,
-  //           duration: 0.5,
-  //         });
-  //         break;
-
-  //       case "saudiMan":
-  //         // Create a timeline for the two-part animation
-  //         const tl = gsap.timeline();
-
-  //         // Second part - continue scaling waves to 1.44 and show saudi-man
-  //         tl.fromTo(
-  //           wavesRef.current,
-  //           {
-  //             scale: 1.28,
-  //           },
-  //           {
-  //             scale: 1.44,
-  //             duration: 0.5,
-  //             ease: "power2.out",
-  //           },
-  //           0
-  //         );
-
-  //         tl.to(
-  //           saudiManRef.current,
-  //           {
-  //             scale: 0.75,
-  //             opacity: 1,
-  //             duration: 0.5,
-  //             ease: "power2.out",
-  //           },
-  //           0
-  //         ); // Start at the same time as the previous animation
-
-  //         break;
-
-  //       case "storyBegins":
-  //         // Hide the Saudi Man and reset waves
-  //         gsap.to(wavesRef.current, { scale: 1, opacity: 0.5, duration: 0.5 });
-  //         gsap.to(saudiManRef.current, {
-  //           scale: 0.125,
-  //           opacity: 0,
-  //           duration: 0.5,
-  //         });
-  //         break;
-
-  //       // Add more cases for other sections if needed
-  //     }
-  //   };
-
-  //   createSectionTimeline();
-  // }, [currentSection]);
-
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
       <Header />
@@ -141,13 +63,13 @@ export default function Home() {
         setCurrentSection={setCurrentSection}
         isVisible={currentSection === "saudiMan"}
       />
+      <StoryBeginsSection
+        currentSection={currentSection}
+        setCurrentSection={setCurrentSection}
+        isVisible={currentSection === "storyBegins"}
+      />
       <div className="hidden">
-        <StoryBeginsSection
-          currentSection={currentSection}
-          setCurrentSection={setCurrentSection}
-          isVisible={currentSection === "storyBegins"}
-        />
-
+        {/* Will work on them later */}
         <MessageImpactSection
           currentSection={currentSection}
           setCurrentSection={setCurrentSection}
