@@ -49,7 +49,7 @@ export const HeroSection = ({
           </h2>
           <p
             ref={heroParagraphRef}
-            className="text-xs lg:text-sm 2xl:text-[24.65px] font-medium rtl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-[30px] z-10 w-max"
+            className="text-xs lg:text-sm 2xl:text-[24.65px] font-medium rtl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 pt-[30px] z-10 w-max"
             dir="rtl"
           >
             منصتك لاكتشاف أفكار مبتكرة <br /> تلهم التغيير الإيجابي.

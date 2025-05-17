@@ -24,22 +24,22 @@ export const useSectionTransition = ({
   const heroParagraphRef = useRef<HTMLParagraphElement>(null);
 
   const transitionToSaudiMan = () => {
-    // Create a timeline for smooth animation sequence
+    const wavesImage = document.querySelector("#waves");
+    const saudiManImage = document.querySelector("#saudi-man");
+
+    // Create a timeline for text animations only
     const tl = gsap.timeline({
       onComplete: () => {
+        // Signal to the parent component to start the next phase of animation
         setCurrentSection("saudiMan");
       },
     });
 
-    // Get the elements from the DOM directly since they're now in the page component
-    const wavesElement = document.getElementById("waves");
-    const saudiManElement = document.getElementById("saudi-man");
-
-    // First animation - Heading & Paragraph fade out while waves scale up
+    // Only animate the text elements here
     tl.to(
       heroHeadingRef.current,
       {
-        y: "-15.85%", // Using percentage change instead of fixed values
+        y: "-100%", // Using percentage change instead of fixed values
         opacity: 0,
         duration: 0.5,
         ease: "power2.out",
@@ -50,7 +50,7 @@ export const useSectionTransition = ({
     tl.to(
       heroParagraphRef.current,
       {
-        y: "-11.36%", // Using percentage change instead of fixed values
+        y: "-50%", // Using percentage change instead of fixed values
         opacity: 0,
         duration: 0.5,
         ease: "power2.out",
@@ -59,46 +59,53 @@ export const useSectionTransition = ({
     );
 
     tl.to(
-      wavesElement,
+      wavesImage,
       {
-        scale: 1.28,
-        duration: 0.5,
+        scale: 1.44,
+        duration: 1,
         ease: "power2.out",
       },
       0
     );
 
-    // Second animation - Waves continue scaling while Saudi Man fades in and scales up
-    tl.to(wavesElement, {
-      scale: 1.44,
-      duration: 0.7,
-      ease: "power2.out",
-    });
+    tl.to(
+      saudiManImage,
+      {
+        scale: 0.55,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      },
+      0
+    );
 
     tl.to(
-      saudiManElement,
+      saudiManImage,
       {
         scale: 0.75,
         opacity: 1,
-        duration: 0.7,
+        duration: 0.6,
         ease: "power2.out",
       },
-      "-=0.7"
-    ); // Start this animation at the same time as the previous one
+      0.4
+    );
   };
 
   useEffect(() => {
-    // Set initial states
-    if (heroHeadingRef.current && heroParagraphRef.current) {
-      gsap.set(heroHeadingRef.current, { y: 0, opacity: 1 });
-      gsap.set(heroParagraphRef.current, { y: 0, opacity: 1 });
-    }
-
     // Set up listeners to handle back navigation
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" || e.key === "Backspace") {
+        const wavesImage = document.querySelector("#waves");
+        const saudiManImage = document.querySelector("#saudi-man");
         // If we're not on the hero section, allow going back
         if (currentSection !== "hero") {
+          // Set initial states
+          if (heroHeadingRef.current && heroParagraphRef.current) {
+            gsap.set(heroHeadingRef.current, { y: 0, opacity: 1 });
+            gsap.set(heroParagraphRef.current, { y: 0, opacity: 1 });
+            gsap.set(wavesImage, { scale: 1, opacity: 1 });
+            gsap.set(saudiManImage, { scale: 0.55, opacity: 0 });
+          }
           const prevSection = getPreviousSection(currentSection);
           setCurrentSection(prevSection);
         }
