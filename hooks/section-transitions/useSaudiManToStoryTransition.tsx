@@ -35,7 +35,6 @@ export const useSaudiManToStoryTransition = ({
       "story-begins-p-2-container"
     );
     const wavesElement = document.getElementById("waves");
-    const mobileElement = document.getElementById("mobile-1");
 
     // First phase - animate the saudi-man
     tl.to(
