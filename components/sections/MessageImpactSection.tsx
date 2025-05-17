@@ -2,9 +2,42 @@
 
 import { InnovationVisuals } from "@/components/InnovationVisuals";
 
-export const MessageImpactSection = () => {
+interface MessageImpactSectionProps {
+  currentSection?:
+    | "hero"
+    | "saudiMan"
+    | "storyBegins"
+    | "messageImpact"
+    | "inspiringConversation";
+  setCurrentSection?: (
+    section:
+      | "hero"
+      | "saudiMan"
+      | "storyBegins"
+      | "messageImpact"
+      | "inspiringConversation"
+  ) => void;
+  isVisible?: boolean;
+}
+
+export const MessageImpactSection = ({
+  currentSection,
+  setCurrentSection,
+  isVisible,
+}: MessageImpactSectionProps) => {
+  const handleNextSection = () => {
+    if (setCurrentSection) {
+      setCurrentSection("inspiringConversation");
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+    <section
+      className={`fixed top-0 left-0 w-full h-screen ${
+        isVisible ? "z-10" : "z-0 pointer-events-none"
+      }`}
+      onClick={handleNextSection}
+    >
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/6 z-10 flex flex-col items-center justify-center">
         <div className="guy-and-accessories absolute z-50 top-1/2 left-1/2 -translate-y-[58%] -translate-x-[90%] scale-75">
           <InnovationVisuals />

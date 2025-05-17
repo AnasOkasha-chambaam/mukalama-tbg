@@ -3,9 +3,42 @@
 import Image from "next/image";
 import { RadioWavesAnimation } from "@/components/slides/RadioWaves";
 
-export const InspiringConversationSection = () => {
+interface InspiringConversationSectionProps {
+  currentSection?:
+    | "hero"
+    | "saudiMan"
+    | "storyBegins"
+    | "messageImpact"
+    | "inspiringConversation";
+  setCurrentSection?: (
+    section:
+      | "hero"
+      | "saudiMan"
+      | "storyBegins"
+      | "messageImpact"
+      | "inspiringConversation"
+  ) => void;
+  isVisible?: boolean;
+}
+
+export const InspiringConversationSection = ({
+  currentSection,
+  setCurrentSection,
+  isVisible,
+}: InspiringConversationSectionProps) => {
+  const handleRestart = () => {
+    if (setCurrentSection) {
+      setCurrentSection("hero");
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+    <section
+      className={`fixed top-0 left-0 w-full h-screen ${
+        isVisible ? "z-10" : "z-0 pointer-events-none"
+      }`}
+      onClick={handleRestart}
+    >
       <Image
         src="/assets/images/DZRT-bg.svg"
         alt="Background"
