@@ -1,5 +1,7 @@
 "use client";
 
+import { InnovationVisuals } from "@/components/InnovationVisuals";
+import { RadioWavesAnimation } from "@/components/slides/RadioWaves";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -104,67 +106,60 @@ export default function Home() {
       </section>
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/6 z-10 flex flex-col items-center justify-center">
-          <div className="guy-and-accessories absolute z-50 top-1/2 left-1/2 -translate-y-[58%] -translate-x-[140%] scale-75">
-            <Image
-              src="/assets/images/guy-standing.png"
-              alt="Guy Standing"
-              width={174}
-              height={584}
-              className="relative z-20"
-            />
-            <div className="bulb-container absolute top-1/2 right-0 -translate-y-[140%] z-40 translate-x-[50%]">
-              <div className="bulb relative z-20">
-                <Image
-                  src="/assets/images/bulb.svg"
-                  alt="Bulb"
-                  width={92}
-                  height={137}
-                  className="absolute opacity-85"
-                />
-                <Image
-                  src="/assets/images/bulb (variant).svg"
-                  alt="Bulb"
-                  width={92}
-                  height={137}
-                />
-              </div>
-              <Image
-                src="/assets/images/scribbles-star.svg"
-                alt="Scribbles"
-                width={123}
-                height={132}
-                className="absolute top-0 left-0 translate-x-[45%] -translate-y-[22%] z-10 scale-125"
-              />
-            </div>
-            <Image
-              src="/assets/images/rocket.svg"
-              alt="Rocket"
-              width={102}
-              height={118}
-              className="rocket-container absolute top-0 left-0 -translate-x-[25%] translate-y-[60%] z-10"
-            />
-
-            <Image
-              src="/assets/images/spark.svg"
-              alt="Spark"
-              width={31}
-              height={49}
-              className="absolute top-0 right-0 -translate-y-[50%] -translate-x-[50%]"
-            />
-
-            <Image
-              src="/assets/images/ellipse.svg"
-              alt="Ellipse"
-              width={9}
-              height={9}
-              className="absolute top-[39%] left-0 -translate-y-1/2 z-10"
-            />
+          <div className="guy-and-accessories absolute z-50 top-1/2 left-1/2 -translate-y-[58%] -translate-x-[90%] scale-75">
+            <InnovationVisuals />
           </div>
           <div className="text-3xl lg:text-5xl font-medium rtl text-center w-max !text-[130px] flex flex-col gap-2 items-center justify-center">
-            <p className="text-primary -translate-x-[45px]">
+            <p className="text-primary -translate-x-[45px] relative z-20">
               تحمل رســـــــــــــالة
             </p>
-            <p>طويــــــــــــــــلة الأثر</p>
+            <div className="relative h-fit">
+              <p className="relative z-20">طويــــــــــــــــلة الأثر</p>
+              {/* wave on white COMPRESSED */}
+              <div className="absolute top-1/2 -translate-y-[45%] -translate-x-[27%] bg-background overflow-hidden scale-[60%]">
+                <video
+                  src={"/assets/videos/waves.mp4"}
+                  className="w-[574px] h-[323px] mix-blend-multiply"
+                  autoPlay
+                  loop
+                  muted
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+        <Image
+          src="/assets/images/DZRT-bg.svg"
+          alt="Background"
+          width={951}
+          height={1426}
+          aria-hidden="true"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[500%]"
+        />
+        <div className="absolute top-[50%] right-[47%] translate-x-1/2 -translate-y-1/12 flex flex-col items-end">
+          <div className="-mb-12 relative">
+            <p className="font-semibold text-[70px] 2xl:text-[130px]">
+              مكــــــالمة
+            </p>{" "}
+            <div className="absolute top-1/2 left-0 -translate-x-[150%] -translate-y-[55%] scale-[75%]">
+              <Image
+                src="/assets/images/radio.svg"
+                alt="Radio"
+                width={484}
+                height={464}
+              />
+              <RadioWavesAnimation />
+            </div>
+          </div>
+          <p className="font-semibold text-[130px] 2xl:text-[200px]">
+            ملهمــــــــــــــــة
+          </p>
+          <div className="text-primary font-semibold text-[65px] 2xl:text-[105px] flex flex-row-reverse gap-6 w-full justify-end -mt-12">
+            <p>تُقدِّم محتوى</p>
+            <p>مبتكر</p>
+            <p>ومتنوع</p>
           </div>
         </div>
       </section>

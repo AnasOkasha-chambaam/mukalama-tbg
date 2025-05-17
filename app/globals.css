@@ -132,4 +132,49 @@
   .dir-rtl {
     direction: rtl;
   }
+
+  /* Spark Animation */
+  @keyframes sparkRotate {
+    0%,
+    100% {
+      /* transform: rotate(-5.76deg); */
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5.76deg);
+    }
+    50% {
+      transform: rotate(-7.78deg);
+    }
+    75% {
+      transform: rotate(5.21deg);
+    }
+  }
+
+  .spark-group {
+    animation: sparkRotate 504ms steps(4, end) infinite;
+    animation-delay: 1ms;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+
+  @keyframes rocketRotate {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    33.33% {
+      transform: rotate(-2.3deg);
+    }
+    66.66% {
+      transform: rotate(2.3deg);
+    }
+  }
+
+  .rocket-group {
+    animation: rocketRotate 404ms steps(4, end) infinite;
+    animation-delay: 1ms;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
 }
