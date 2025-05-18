@@ -133,11 +133,9 @@
     direction: rtl;
   }
 
-  /* Spark Animation */
   @keyframes sparkRotate {
     0%,
     100% {
-      /* transform: rotate(-5.76deg); */
       transform: rotate(0deg);
     }
     25% {

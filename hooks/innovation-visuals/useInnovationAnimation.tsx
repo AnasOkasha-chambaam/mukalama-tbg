@@ -9,27 +9,24 @@ export const useInnovationAnimation = ({
   useEffect(() => {
     if (!lightbulbRef.current) return;
 
-    // Set up the animation timeline
     const tl = gsap.timeline({ repeat: -1 });
 
-    // First animation: from fill-2 to fill-1 (URL to #FFD503)
     tl.fromTo(
       lightbulbRef.current,
       {
         opacity: "1",
         delay: 0.001,
-        duration: 0.1, // Slow curve approximation
+        duration: 0.1,
         ease: "cubic-bezier(0, 0, 0.58, 1)",
       },
       {
         opacity: "0",
-        duration: 0.6, // Slow curve approximation
+        duration: 0.6,
         delay: 1.4,
         ease: "cubic-bezier(0, 0, 0.58, 1)",
       }
     );
 
-    // Clean up animation when component unmounts
     return () => {
       tl.kill();
     };

@@ -36,8 +36,6 @@ export const SaudiManSection = ({
         isVisible ? "z-10" : "z-0 pointer-events-none"
       }`}
       onClick={transitionToStoryBegins}
-    >
-      {/* This section is empty because the saudi-man image is in the page.tsx component */}
-    </section>
+    ></section>
   );
 };

@@ -51,7 +51,7 @@ export const MessageImpactSection = ({
           </p>
           <div className="relative h-fit">
             <p className="relative z-20">طويــــــــــــــــلة الأثر</p>
-            {/* wave on white COMPRESSED */}
+
             <div className="absolute top-1/2 -translate-y-[45%] -translate-x-[27%] bg-background overflow-hidden scale-[60%]">
               <video
                 src={"/assets/videos/waves.mp4"}

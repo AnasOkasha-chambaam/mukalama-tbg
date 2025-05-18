@@ -19,7 +19,6 @@ export const useSectionTransition = ({
   currentSection,
   setCurrentSection,
 }: SectionTransitionProps) => {
-  // Refs for elements in HeroSection
   const heroHeadingRef = useRef<HTMLHeadingElement>(null);
   const heroParagraphRef = useRef<HTMLParagraphElement>(null);
 
@@ -27,19 +26,16 @@ export const useSectionTransition = ({
     const wavesImage = document.querySelector("#waves");
     const saudiManImage = document.querySelector("#saudi-man");
 
-    // Create a timeline for text animations only
     const tl = gsap.timeline({
       onComplete: () => {
-        // Signal to the parent component to start the next phase of animation
         setCurrentSection("saudiMan");
       },
     });
 
-    // Only animate the text elements here
     tl.to(
       heroHeadingRef.current,
       {
-        y: "-100%", // Using percentage change instead of fixed values
+        y: "-100%",
         opacity: 0,
         duration: 0.5,
         ease: "power2.out",
@@ -50,7 +46,7 @@ export const useSectionTransition = ({
     tl.to(
       heroParagraphRef.current,
       {
-        y: "-50%", // Using percentage change instead of fixed values
+        y: "-50%",
         opacity: 0,
         duration: 0.5,
         ease: "power2.out",
@@ -92,14 +88,12 @@ export const useSectionTransition = ({
   };
 
   useEffect(() => {
-    // Set up listeners to handle back navigation
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" || e.key === "Backspace") {
         const wavesImage = document.querySelector("#waves");
         const saudiManImage = document.querySelector("#saudi-man");
-        // If we're not on the hero section, allow going back
+
         if (currentSection !== "hero") {
-          // Set initial states
           if (heroHeadingRef.current && heroParagraphRef.current) {
             gsap.set(heroHeadingRef.current, { y: 0, opacity: 1 });
             gsap.set(heroParagraphRef.current, { y: 0, opacity: 1 });
@@ -119,7 +113,6 @@ export const useSectionTransition = ({
     };
   }, [currentSection, setCurrentSection]);
 
-  // Helper function to get the previous section for navigation
   const getPreviousSection = (section: Section): Section => {
     switch (section) {
       case "saudiMan":

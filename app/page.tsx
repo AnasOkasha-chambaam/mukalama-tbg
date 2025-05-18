@@ -28,7 +28,6 @@ export default function Home() {
     <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
       <Header />
 
-      {/* Shared elements that will be animated */}
       <Image
         aria-hidden="true"
         src="/assets/icons/waves.svg"
@@ -51,7 +50,6 @@ export default function Home() {
         className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-5 z-[6] opacity-0 scale-[55%]"
       />
 
-      {/* All sections are rendered, but only the current one is visible/interactive */}
       <HeroSection
         currentSection={currentSection}
         setCurrentSection={setCurrentSection}
@@ -74,7 +72,6 @@ export default function Home() {
         isVisible={currentSection === "messageImpact"}
       />
       <div className="hidden">
-        {/* Will work on them later */}
         <InspiringConversationSection
           currentSection={currentSection}
           setCurrentSection={setCurrentSection}
@@ -82,7 +79,6 @@ export default function Home() {
         />
       </div>
 
-      {/* Debug overlay to show current section - can be removed in production */}
       <div className="fixed bottom-4 right-4 bg-black/70 text-white px-4 py-2 text-sm rounded z-50">
         Current: {currentSection}
       </div>

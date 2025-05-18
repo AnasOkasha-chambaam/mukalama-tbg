@@ -69,12 +69,7 @@ export const StoryBeginsSection = ({
             id="right-reveal-line"
             className="absolute inset-y-0 right-0 w-1/2 bg-background z-10 h-full"
           ></div>
-          {/* <p
-            className="absolute inset-0 text-[100px] lg:text-[140px] font-semibold rtl text-center opacity-25 w-max"
-            id="story-begins-p-2"
-          >
-            بمكالمة قصيرة
-          </p> */}
+
           <p
             className="text-[100px] lg:text-[140px] font-semibold rtl text-center text-primary w-max"
             id="story-begins-p-2"

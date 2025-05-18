@@ -19,15 +19,12 @@ export const useStoryToMessageTransition = ({
   setCurrentSection,
 }: StoryToMessageTransitionProps) => {
   const transitionToMessageImpact = () => {
-    // Create a timeline for animations
     const tl = gsap.timeline({
       onComplete: () => {
-        // Signal to the parent component to show the next section
         setCurrentSection("messageImpact");
       },
     });
 
-    // Get the elements from the DOM
     const storyBeginsTextElement = document.getElementById("story-begins-p");
     const storyBeginsText2Container = document.getElementById(
       "story-begins-p-2-container"
@@ -38,7 +35,6 @@ export const useStoryToMessageTransition = ({
       "message-impact-container"
     );
 
-    // Animate elements moving up
     tl.to(
       mobileElement,
       {
