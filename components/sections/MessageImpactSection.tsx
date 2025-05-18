@@ -38,7 +38,10 @@ export const MessageImpactSection = ({
       }`}
       onClick={handleNextSection}
     >
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/6 z-10 flex flex-col items-center justify-center">
+      <div
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-[150%] opacity-0 z-10 flex flex-col items-center justify-center"
+        id="message-impact-container"
+      >
         <div className="guy-and-accessories absolute z-50 top-1/2 left-1/2 -translate-y-[58%] -translate-x-[90%] scale-75">
           <InnovationVisuals />
         </div>
