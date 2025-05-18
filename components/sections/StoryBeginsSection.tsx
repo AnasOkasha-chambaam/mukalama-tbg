@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useSaudiManToStoryTransition } from "@/hooks/section-transitions";
+import {
+  useSaudiManToStoryTransition,
+  useStoryToMessageTransition,
+} from "@/hooks/section-transitions";
 
 interface StoryBeginsSectionProps {
   currentSection?:
@@ -26,18 +29,17 @@ export const StoryBeginsSection = ({
   setCurrentSection,
   isVisible,
 }: StoryBeginsSectionProps) => {
-  const handleNextSection = () => {
-    if (setCurrentSection) {
-      setCurrentSection("messageImpact");
-    }
-  };
+  const { transitionToMessageImpact } = useStoryToMessageTransition({
+    currentSection: currentSection || "storyBegins",
+    setCurrentSection: setCurrentSection || (() => {}),
+  });
 
   return (
     <section
       className={`fixed top-0 left-0 w-full h-screen ${
         isVisible ? "z-10" : "z-0 pointer-events-none"
       }`}
-      onClick={handleNextSection}
+      onClick={transitionToMessageImpact}
     >
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center">
         <Image

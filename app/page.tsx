@@ -68,14 +68,13 @@ export default function Home() {
         setCurrentSection={setCurrentSection}
         isVisible={currentSection === "storyBegins"}
       />
+      <MessageImpactSection
+        currentSection={currentSection}
+        setCurrentSection={setCurrentSection}
+        isVisible={currentSection === "messageImpact"}
+      />
       <div className="hidden">
         {/* Will work on them later */}
-        <MessageImpactSection
-          currentSection={currentSection}
-          setCurrentSection={setCurrentSection}
-          isVisible={currentSection === "messageImpact"}
-        />
-
         <InspiringConversationSection
           currentSection={currentSection}
           setCurrentSection={setCurrentSection}
